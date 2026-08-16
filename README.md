@@ -43,18 +43,39 @@ By default the tests run in headless mode. To see the browser while the tests ru
 ./gradlew clean test -Dchrome.switches=
 ```
 
-To force headless mode explicitly:
+### Running a single module
+
+Each feature has its own tag, so you can run the modules separately:
 
 ```bash
-./gradlew clean test -Dchrome.switches=--headless=new
+# only authentication scenarios
+./gradlew clean test -Pcucumber.filter.tags="@authentication"
+
+# only product management scenarios
+./gradlew clean test -Pcucumber.filter.tags="@product-management"
+```
+
+Without the filter, the whole suite runs:
+
+```bash
+./gradlew clean test
 ```
 
 ## Troubleshooting
 
-If the report still shows a feature name that you renamed or deleted, the Gradle
-daemon cached the requirements in memory. Restart it and rebuild:
+If you added or renamed a feature file and it still does not show up in the
+run or the report, the Gradle daemon cached the requirements in memory.
+Restart it and rebuild:
 
 ```bash
 ./gradlew --stop
 ./gradlew clean test
+```
+
+If the report shows "No data available in table", clear the stale test
+output and rerun:
+
+```bash
+rm -rf target
+./gradlew test
 ```

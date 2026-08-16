@@ -27,6 +27,10 @@ dependencies {
 test {
     useJUnitPlatform()
     systemProperty 'chrome.switches', System.getProperty('chrome.switches', '--headless=new')
+    def filterTags = providers.gradleProperty('cucumber.filter.tags').getOrNull()
+    if (filterTags) {
+        systemProperty 'cucumber.filter.tags', filterTags
+    }
 }
 
 serenity {

@@ -16,6 +16,7 @@ public class Login {
                 Enter.theValue(username).into(SauceDemoHomePage.USERNAME_FIELD),
                 Enter.theValue(password).into(SauceDemoHomePage.PASSWORD_FIELD),
                 Click.on(SauceDemoHomePage.LOGIN_BUTTON),
+                // the following step used to race the navigation, wait for the inventory title first
                 WaitUntil.the(InventoryPage.PRODUCTS_TITLE, isCurrentlyVisible()).forNoMoreThan(10).seconds());
     }
 }

@@ -84,6 +84,7 @@ public class AuthenticationStepDefinitions {
 
     @Then("{actor} should be redirected to the login page")
     public void theLoginPageIsShown(Actor actor) {
+        // the redirect takes longer when scenarios run in parallel
         actor.attemptsTo(
                 WaitUntil.the(SauceDemoHomePage.USERNAME_FIELD, isCurrentlyVisible()).forNoMoreThan(20).seconds()
         );
