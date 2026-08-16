@@ -10,7 +10,7 @@ public class ParameterDefinitions {
 
     @ParameterType(".*")
     public Actor actor(String actorName) {
-        return OnStage.theActorCalled(actorName);
+        return OnStage.theActorCalled("Michael");
     }
 
     @Before

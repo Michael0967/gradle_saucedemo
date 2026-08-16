@@ -26,6 +26,7 @@ dependencies {
 
 test {
     useJUnitPlatform()
+    systemProperty 'chrome.switches', System.getProperty('chrome.switches', '--headless=new')
 }
 
 serenity {
