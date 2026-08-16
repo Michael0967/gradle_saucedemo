@@ -26,6 +26,7 @@ dependencies {
 
 test {
     useJUnitPlatform()
+    maxParallelForks = 3
     systemProperty 'chrome.switches', System.getProperty('chrome.switches', '--headless=new')
     def filterTags = providers.gradleProperty('cucumber.filter.tags').getOrNull()
     if (filterTags) {

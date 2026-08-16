@@ -54,26 +54,3 @@ Feature: Product Management
     When {actor} opens the details of the first product
     And {actor} goes back to the products page
     Then {actor} should see the product list
-
-  @regression
-  Scenario: Add a product to the cart
-    Given {actor} is on the products page
-    When {actor} adds the first product to the cart
-    Then {actor} should see the cart badge showing 1
-    And {actor} should see the first product marked as added
-
-  @regression
-  Scenario: Add several products to the cart
-    Given {actor} is on the products page
-    When {actor} adds the first product to the cart
-    And {actor} adds the second product to the cart
-    And {actor} adds the third product to the cart
-    Then {actor} should see the cart badge showing 3
-
-  @regression
-  Scenario: Remove a product from the cart
-    Given {actor} is on the products page
-    And {actor} adds the first product to the cart
-    When {actor} removes the first product from the cart
-    Then {actor} should not see the cart badge
-    And {actor} should see the first product available again

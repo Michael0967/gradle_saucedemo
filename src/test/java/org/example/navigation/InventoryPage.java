@@ -15,7 +15,10 @@ public class InventoryPage extends PageObject {
     public static final Target PRODUCT_PRICES = Target.the("product prices").locatedBy(".inventory_item_price");
     public static final Target FIRST_PRODUCT_NAME = Target.the("first product name").locatedBy(".inventory_item_name");
     public static final Target PRODUCT_DETAILS = Target.the("product details").locatedBy(".inventory_details");
+    public static final Target PRODUCT_DETAIL_NAME = Target.the("product detail name").locatedBy(".inventory_details_name");
+    public static final Target PRODUCT_DETAIL_PRICE = Target.the("product detail price").locatedBy(".inventory_details_price");
     public static final Target BACK_TO_PRODUCTS = Target.the("back to products button").locatedBy("#back-to-products");
+    public static final Target CART_LINK = Target.the("cart link").locatedBy(".shopping_cart_link");
     public static final Target CART_BADGE = Target.the("cart badge").locatedBy(".shopping_cart_badge");
     public static final Target FIRST_PRODUCT_ADD_BUTTON = Target.the("first add to cart button").locatedBy("(//button[contains(@id,'add-to-cart')])[1]");
     public static final Target SECOND_PRODUCT_ADD_BUTTON = Target.the("second add to cart button").locatedBy("(//button[contains(@id,'add-to-cart')])[2]");

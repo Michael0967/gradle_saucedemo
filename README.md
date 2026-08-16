@@ -34,8 +34,11 @@ To regenerate the report without re-running the tests:
 
 ## Test execution options
 
-Scenarios run in parallel (3 concurrent threads, configured in
-`src/test/resources/junit-platform.properties`).
+There is one test runner per feature (`AuthenticationTestSuite`,
+`ProductManagementTestSuite`, `CartTestSuite`). Gradle runs them in parallel in
+separate worker processes (`maxParallelForks = 3` in `build.gradle`), so each
+feature's scenarios execute concurrently and the whole suite finishes in about
+half a minute.
 
 By default the tests run in headless mode. To see the browser while the tests run:
 
@@ -53,6 +56,9 @@ Each feature has its own tag, so you can run the modules separately:
 
 # only product management scenarios
 ./gradlew clean test -Pcucumber.filter.tags="@product-management"
+
+# only cart scenarios
+./gradlew clean test -Pcucumber.filter.tags="@cart"
 ```
 
 Without the filter, the whole suite runs:
