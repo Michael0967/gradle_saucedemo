@@ -9,6 +9,7 @@ public class TheCartItemCount implements Question<Integer> {
 
     @Override
     public Integer answeredBy(Actor actor) {
+        // counting the name elements is easier than finding a counter element
         return Text.ofEach(CartPage.CART_ITEM_NAMES).answeredBy(actor).size();
     }
 

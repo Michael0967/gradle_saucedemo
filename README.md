@@ -1,11 +1,11 @@
-# Sauce Demo E2E Testing
+# Sauce Demo - Automated Tests
 
-E2E tests for [saucedemo.com](https://www.saucedemo.com/) built with Gradle, Gherkin, Screenplay and Selenium (via Serenity BDD).
+End to end tests for saucedemo.com using Gradle, Gherkin, Screenplay pattern and Serenity BDD with Selenium.
 
 ## Requirements
 
 - Java 17 or higher
-- Google Chrome installed (the chromedriver binary is downloaded automatically)
+- Google Chrome (chromedriver gets downloaded automatically)
 
 ## Running the tests
 
@@ -17,6 +17,8 @@ To run the tests and generate the report in one go:
 
 The `clean` step deletes the previous report output, and the Serenity report is
 generated automatically after the tests finish.
+
+> **Tip:** if you see stale reports, try `./gradlew --stop` first (the Gradle daemon holds on to old config).
 
 ## Viewing the report
 
@@ -46,6 +48,8 @@ By default the tests run in headless mode. To see the browser while the tests ru
 ./gradlew clean test -Dchrome.switches=
 ```
 
+Handy when you want to see what the browser is doing, though the tests run slower in headed mode.
+
 ### Running a single module
 
 Each feature has its own tag, so you can run the modules separately:
@@ -73,24 +77,7 @@ Without the filter, the whole suite runs:
 ./gradlew clean test
 ```
 
-## Troubleshooting
-
-If you added or renamed a feature file and it still does not show up in the
-run or the report, the Gradle daemon cached the requirements in memory.
-Restart it and rebuild:
-
-```bash
-./gradlew --stop
-./gradlew clean test
-```
-
-If the report shows "No data available in table", clear the stale test
-output and rerun:
-
-```bash
-rm -rf target
-./gradlew test
-```
+**Note:** the Gradle daemon sometimes caches old requirements. If a renamed feature does not show up, run `./gradlew --stop` and rebuild. Also, if the report says "No data available in table", delete the `target` folder and rerun.
 
 ## QA Analysis
 

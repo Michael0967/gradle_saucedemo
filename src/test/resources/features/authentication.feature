@@ -9,7 +9,7 @@ Feature: User Authentication
     Given {actor} is on the SauceDemo login page
 
   @smoke @critical
-  Scenario: Successful login with valid credentials
+  Scenario: login with valid user
     When {actor} enters the username "standard_user"
     And {actor} enters the password "secret_sauce"
     And {actor} presses the Login button

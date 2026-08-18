@@ -100,9 +100,10 @@ public class CartStepDefinitions {
 
     @Then("{actor} should see a subtotal equal to the sum of item prices")
     public void theSubtotalMatchesTheSumOfItemPrices(Actor actor) {
+        // grab all cart item prices and verify the checkout subtotal matches
         List<Double> cartPrices = actor.asksFor(TheCartPrices.value());
         double expectedSubtotal = cartPrices.stream().mapToDouble(Double::doubleValue).sum();
-        actor.should(seeThat("cart subtotal", TheCartSubtotal.value(), equalTo(expectedSubtotal)));
+        actor.should(seeThat("cart subtotal", TheCartSubtotal.amount(), equalTo(expectedSubtotal)));
     }
 
     private static String formatPrice(double price) {

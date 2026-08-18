@@ -12,10 +12,11 @@ public class TheCartSubtotal implements Question<Double> {
     @Override
     public Double answeredBy(Actor actor) {
         String text = Text.of(CheckoutPage.SUBTOTAL).answeredBy(actor);
+        // strip the dollar sign and "Item total: " prefix, keep digits and dot
         return Double.parseDouble(text.replaceAll("[^0-9.]", ""));
     }
 
-    public static TheCartSubtotal value() {
+    public static TheCartSubtotal amount() {
         return new TheCartSubtotal();
     }
 

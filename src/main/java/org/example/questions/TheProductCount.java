@@ -11,6 +11,7 @@ public class TheProductCount implements Question<Integer> {
 
     @Override
     public Integer answeredBy(Actor actor) {
+        // same idea as TheCartItemCount
         return Text.ofEach(InventoryPage.PRODUCT_NAMES).answeredBy(actor).size();
     }
 

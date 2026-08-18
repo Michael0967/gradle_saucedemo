@@ -11,6 +11,7 @@ public class TheCartPrices implements Question<List<Double>> {
 
     @Override
     public List<Double> answeredBy(Actor actor) {
+        // prices come as "$9.99" from the page, drop the $
         return Text.ofEach(CartPage.CART_ITEM_PRICES).answeredBy(actor).stream()
                 .map(price -> Double.parseDouble(price.replace("$", "")))
                 .toList();

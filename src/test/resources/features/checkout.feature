@@ -88,3 +88,5 @@ Feature: Checkout
     Given {actor} logs out
     When {actor} tries to open the checkout page directly
     Then {actor} should be redirected to the login page
+
+  # TODO: test with problem_user too

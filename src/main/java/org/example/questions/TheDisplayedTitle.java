@@ -12,7 +12,7 @@ public class TheDisplayedTitle implements Question<String> {
         return Text.of(InventoryPage.PRODUCTS_TITLE).answeredBy(actor);
     }
 
-    public static TheDisplayedTitle value() {
+    public static TheDisplayedTitle text() {
         return new TheDisplayedTitle();
     }
 }

@@ -9,10 +9,7 @@ import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.actions.Enter;
 import net.serenitybdd.screenplay.questions.Visibility;
 import net.serenitybdd.screenplay.waits.WaitUntil;
-import org.example.navigation.InventoryPage;
-import org.example.navigation.OpenTheApplication;
-import org.example.navigation.OpenTheInventoryPage;
-import org.example.navigation.SauceDemoHomePage;
+import org.example.navigation.*;
 import org.example.questions.TheCurrentUrl;
 import org.example.questions.TheDisplayedTitle;
 import org.example.questions.TheLoginError;
@@ -74,6 +71,7 @@ public class AuthenticationStepDefinitions {
 
     @When("{actor} goes back to the previous page")
     public void goBack(Actor actor) {
+        // this tests the browser back button behavior after logout
         actor.attemptsTo(Browser.navigateBack());
     }
 
@@ -93,7 +91,7 @@ public class AuthenticationStepDefinitions {
 
     @Then("{actor} should see the {string} title")
     public void theTitleIsVisible(Actor actor, String expectedTitle) {
-        actor.should(seeThat(TheDisplayedTitle.value(), equalTo(expectedTitle)));
+        actor.should(seeThat(TheDisplayedTitle.text(), equalTo(expectedTitle)));
     }
 
     @Then("{actor} should see an authentication error message")

@@ -1,10 +1,6 @@
 @cart
 Feature: Cart
 
-  As a SauceDemo user
-  I want to review the products I am about to buy
-  So that I keep control over my purchase
-
   Background:
     Given {actor} is signed in as "standard_user"
 
@@ -57,13 +53,11 @@ Feature: Cart
     And {actor} removes the first product on the cart page
     Then {actor} should see an empty cart
 
-  @regression
-  Scenario: The empty cart is shown correctly
+  Scenario: empty cart shows ok
     Given {actor} is on the products page
     When {actor} opens the cart
     Then {actor} should see an empty cart
 
-  @regression
   Scenario: Continue shopping keeps the products in the cart
     Given {actor} is on the products page
     And {actor} adds the first product to the cart
@@ -73,7 +67,7 @@ Feature: Cart
     When {actor} opens the cart
     Then {actor} should see 1 product in the cart
 
-  @regression
+  @regression @cart-price-fix
   Scenario: The price of a product matches the one in the cart
     Given {actor} is on the products page
     And {actor} notes the price of the first product
@@ -81,6 +75,7 @@ Feature: Cart
     And {actor} opens the cart
     Then {actor} should see the same product price in the cart
 
+  # this one covers the bug where the subtotal was off by cents
   @regression
   Scenario: The subtotal matches the sum of item prices
     Given {actor} is on the products page

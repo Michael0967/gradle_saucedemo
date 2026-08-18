@@ -41,6 +41,7 @@ public class CheckoutStepDefinitions {
 
     @Given("{actor} completes the checkout information with valid data")
     public void fillValidData(Actor actor) {
+        // goes through the full checkout info flow with valid data
         actor.attemptsTo(Click.on(InventoryPage.CART_LINK));
         actor.attemptsTo(Click.on(CheckoutPage.CHECKOUT_BTN));
         fillFields(actor, "Michael", "Rojas", "110141");

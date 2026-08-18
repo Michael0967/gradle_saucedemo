@@ -1,10 +1,6 @@
 @product-filtering
 Feature: Product Filtering
 
-  As a SauceDemo user
-  I want to sort the product catalog
-  So that I can find products more easily
-
   Background:
     Given {actor} is signed in as "standard_user"
 

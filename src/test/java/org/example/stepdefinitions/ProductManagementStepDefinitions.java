@@ -81,7 +81,7 @@ public class ProductManagementStepDefinitions {
     }
 
     @Then("{actor} should see the products sorted by name ascending")
-    public void productsAreSortedByNameAscending(Actor actor) {
+    public void sortedByNameAsc(Actor actor) {
         List<String> names = actor.asksFor(TheProductNames.value());
         List<String> expected = new ArrayList<>(names);
         expected.sort(Comparator.naturalOrder());
@@ -89,7 +89,7 @@ public class ProductManagementStepDefinitions {
     }
 
     @Then("{actor} should see the products sorted by name descending")
-    public void productsAreSortedByNameDescending(Actor actor) {
+    public void sortedByNameDesc(Actor actor) {
         List<String> names = actor.asksFor(TheProductNames.value());
         List<String> expected = new ArrayList<>(names);
         expected.sort(Comparator.reverseOrder());
@@ -97,7 +97,7 @@ public class ProductManagementStepDefinitions {
     }
 
     @Then("{actor} should see the products sorted by price ascending")
-    public void productsAreSortedByPriceAscending(Actor actor) {
+    public void sortedByPriceAsc(Actor actor) {
         List<Double> prices = actor.asksFor(TheProductPrices.value());
         List<Double> expected = new ArrayList<>(prices);
         expected.sort(Comparator.naturalOrder());
@@ -105,7 +105,7 @@ public class ProductManagementStepDefinitions {
     }
 
     @Then("{actor} should see the products sorted by price descending")
-    public void productsAreSortedByPriceDescending(Actor actor) {
+    public void sortedByPriceDesc(Actor actor) {
         List<Double> prices = actor.asksFor(TheProductPrices.value());
         List<Double> expected = new ArrayList<>(prices);
         expected.sort(Comparator.reverseOrder());
@@ -134,6 +134,7 @@ public class ProductManagementStepDefinitions {
 
     @Then("{actor} should see the name of each product")
     public void allProductsHaveAName(Actor actor) {
+        // verifies all 6 product slots have names and none are blank
         actor.should(
                 seeThat("product names", TheProductNames.value(), hasSize(6)),
                 seeThat("product names are not empty", TheProductNames.value(), everyItem(is(not(emptyString()))))

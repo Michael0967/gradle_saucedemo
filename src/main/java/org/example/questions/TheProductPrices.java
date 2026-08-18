@@ -5,7 +5,7 @@ import net.serenitybdd.screenplay.Question;
 import net.serenitybdd.screenplay.questions.Text;
 import org.example.navigation.InventoryPage;
 
-import java.util.List;
+import java.util.*;
 
 public class TheProductPrices implements Question<List<Double>> {
 

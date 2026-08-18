@@ -8,6 +8,7 @@ public class TheCurrentUrl implements Question<String> {
 
     @Override
     public String answeredBy(Actor actor) {
+        // grab current URL directly from the driver
         return BrowseTheWeb.as(actor).getDriver().getCurrentUrl();
     }
 
