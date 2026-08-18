@@ -11,14 +11,15 @@ repositories {
 }
 
 dependencies {
+    implementation 'net.serenity-bdd:serenity-core:5.3.11'
+    implementation 'net.serenity-bdd:serenity-screenplay:5.3.11'
+    implementation 'net.serenity-bdd:serenity-screenplay-webdriver:5.3.11'
+    implementation 'net.serenity-bdd:serenity-ensure:5.3.11'
+    implementation 'net.serenity-bdd:serenity-cucumber:5.3.11'
+
     testImplementation platform('org.junit:junit-bom:6.0.0')
     testImplementation 'org.junit.jupiter:junit-jupiter'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
-    testImplementation 'net.serenity-bdd:serenity-core:5.3.11'
-    testImplementation 'net.serenity-bdd:serenity-cucumber:5.3.11'
-    testImplementation 'net.serenity-bdd:serenity-screenplay:5.3.11'
-    testImplementation 'net.serenity-bdd:serenity-screenplay-webdriver:5.3.11'
-    testImplementation 'net.serenity-bdd:serenity-ensure:5.3.11'
     testImplementation 'io.cucumber:cucumber-junit-platform-engine:7.34.2'
     testImplementation 'org.junit.platform:junit-platform-suite'
     testImplementation 'ch.qos.logback:logback-classic:1.5.18'
@@ -26,7 +27,7 @@ dependencies {
 
 test {
     useJUnitPlatform()
-    maxParallelForks = 3
+    maxParallelForks = 5
     systemProperty 'chrome.switches', System.getProperty('chrome.switches', '--headless=new')
     def filterTags = providers.gradleProperty('cucumber.filter.tags').getOrNull()
     if (filterTags) {
@@ -36,7 +37,7 @@ test {
 
 serenity {
     reports = ["single-page-html"]
-    requirementsBaseDir = 'src/test/resources'
+    requirementsBaseDir = 'src/test/resources/features'
 }
 
 test.finalizedBy(aggregate)

@@ -9,9 +9,12 @@ import net.serenitybdd.screenplay.questions.Visibility;
 import org.example.navigation.CartPage;
 import org.example.navigation.InventoryPage;
 import org.example.questions.TheCartItemCount;
+import org.example.questions.TheCartPrices;
+import org.example.questions.TheCartSubtotal;
 import org.example.questions.TheProductNames;
 import org.example.questions.TheProductPrices;
 
+import java.util.List;
 import java.util.Locale;
 
 import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
@@ -93,6 +96,13 @@ public class CartStepDefinitions {
     public void theCartShowsTheSameProductPrice(Actor actor) {
         actor.should(seeThat("cart product price", Text.of(CartPage.FIRST_CART_ITEM_PRICE),
                 equalTo(formatPrice((Double) actor.recall("firstProductPrice")))));
+    }
+
+    @Then("{actor} should see a subtotal equal to the sum of item prices")
+    public void theSubtotalMatchesTheSumOfItemPrices(Actor actor) {
+        List<Double> cartPrices = actor.asksFor(TheCartPrices.value());
+        double expectedSubtotal = cartPrices.stream().mapToDouble(Double::doubleValue).sum();
+        actor.should(seeThat("cart subtotal", TheCartSubtotal.value(), equalTo(expectedSubtotal)));
     }
 
     private static String formatPrice(double price) {

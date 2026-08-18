@@ -81,7 +81,17 @@ Feature: Cart
     And {actor} opens the cart
     Then {actor} should see the same product price in the cart
 
-  @security @critical
+  @regression
+  Scenario: The subtotal matches the sum of item prices
+    Given {actor} is on the products page
+    When {actor} adds the first product to the cart
+    And {actor} adds the second product to the cart
+    And {actor} opens the cart
+    And {actor} proceeds to checkout
+    And {actor} fills the checkout information with "Michael" "Rojas" "110141"
+    Then {actor} should see a subtotal equal to the sum of item prices
+
+  @regression @critical
   Scenario: A product looks the same in the catalog, its details and the cart
     Given {actor} is on the products page
     And {actor} notes the name of the first product

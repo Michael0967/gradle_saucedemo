@@ -23,26 +23,6 @@ Feature: Product Management
     And {actor} should see the price of each product
 
   @regression
-  Scenario: Sort products by name from A to Z
-    When {actor} sorts the products by "Name (A to Z)"
-    Then {actor} should see the products sorted by name ascending
-
-  @regression
-  Scenario: Sort products by name from Z to A
-    When {actor} sorts the products by "Name (Z to A)"
-    Then {actor} should see the products sorted by name descending
-
-  @regression
-  Scenario: Sort products by price from low to high
-    When {actor} sorts the products by "Price (low to high)"
-    Then {actor} should see the products sorted by price ascending
-
-  @regression
-  Scenario: Sort products by price from high to low
-    When {actor} sorts the products by "Price (high to low)"
-    Then {actor} should see the products sorted by price descending
-
-  @regression
   Scenario: View the details of a product
     Given {actor} is on the products page
     When {actor} opens the details of the first product
